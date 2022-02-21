@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/template.xhtml">
+    <ui:define name="title">
+        Home
+    </ui:define>
+    <ui:define name="content">
+        <ui:repeat var="blog" value="#{BlogController.blogList}">
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h:form>
+                            <h3 class="mb-0">#{blog.title}</h3>
+                            <div class="mb-1 text-muted">#{blog.id}</div>
+                            <p class="mb-auto">#{blog.detail}</p> 
+                            Category: 
+                            <ui:repeat var="category" value="#{blog.blogCategories}">
+                                <h:commandLink action="#{BlogController.categoryController.update(category)}"> <span class="badge badge-warning">#{category.name}</span> </h:commandLink>                                  
+                            </ui:repeat>
+                            <br/>
+                            <h:commandLink styleClass="stretched-link" value="Read More" action="#{BlogController.readMore(blog)}" />
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        </ui:repeat>
+    </ui:define>
+
+</ui:composition>
+

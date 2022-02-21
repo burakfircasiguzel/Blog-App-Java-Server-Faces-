@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <h:outputScript library="js" name="jquery-3.6.0.min.js"/>
+        <h:outputScript library="js" name="bootstrap.js"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <br/>
+            <h1>Document</h1>
+            <h:form enctype="multipart/form-data">
+                <label>Document</label>
+                <h:inputFile value="#{DocumentController.doc}" styleClass="form-control" />
+                <br/>
+                <h:commandButton styleClass="btn btn-primary" action="#{DocumentController.upload}" value="Upload" />
+            </h:form>
+            
+            <hr/><!-- comment -->
+            <h:dataTable styleClass="table table-striped" value="#{DocumentController.documentList}" var="d">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    #{d.id}
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">PATH</f:facet>
+                    #{d.filePath}
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">NAME</f:facet>
+                    #{d.fileName}
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">TYPE</f:facet>
+                    #{d.fileType}
+                </h:column>
+                <h:column>
+                     <f:facet name="header">DOCUMENT</f:facet>
+                     <h:graphicImage value="/file/#{d.fileName}" />
+                </h:column>
+            </h:dataTable>
+        </div>
+    </h:body>
+</html>
+

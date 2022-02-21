@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                >
+    <div class="d-flex justify-content-center">
+        <nav class="nav nav-pills nav-justified btn-group d-flex justify-content-center">
+             <h:link  styleClass="btn btn-info  nav-link" outcome="faces/index"><i class="fas fa-home"></i> Anasayfa</h:link>
+             <h:link rendered="#{UserController.user.auth == false }" styleClass="btn btn-primary  nav-link" outcome="faces/login" ><i class="fas fa-sign-in-alt"></i> Login</h:link>
+             <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-success  nav-link" outcome="faces/admin/blogs"><i class="fas fa-sign-in-alt"></i> Admin</h:link>
+             <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-danger  nav-link" outcome="faces/logout"><i class="fas fa-sign-in-alt"></i> Logout</h:link>
+            <h:link styleClass="btn btn-warning  nav-link" outcome="/document/document.xhtml"><i class="fas fa-plus"></i> Document</h:link>
+        </nav>
+    </div>
+</ui:composition>

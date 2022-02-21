@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">
+        Admin - Blogs
+    </ui:define>
+    <ui:define name="menu">
+        <div class="d-flex justify-content-center">
+            <nav class="nav nav-pills nav-justified btn-group d-flex justify-content-center">
+                <h:link  styleClass="btn btn-info  nav-link" outcome="/faces/index"  value="Anasayfa"/>
+                <h:link rendered="#{UserController.user.auth == false }" styleClass="btn btn-primary  nav-link" outcome="/faces/login"  value="Giris Yap"/>
+                <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-success  nav-link" outcome="/faces/admin/blogs"  value="Admin"/>
+                <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-danger  nav-link" outcome="/faces/logout"  value="Cikis Yap"/>
+                <h:link styleClass="btn btn-warning  nav-link" outcome="/document/document.xhtml"  value="Document"/>
+                <h:link styleClass="btn btn-success  nav-link" outcome="/admin/add-blog.xhtml"  value="Add Blog"/>
+            </nav>
+        </div>
+    </ui:define>
+    <ui:define name="content">
+        <div class="col-md-6">  
+            <h:form id="category-table">
+                <h:dataTable value="#{BlogController.blogList}" var="blog" styleClass="table table-striped">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>#{blog.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">TITLE</f:facet>#{blog.title}    
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">DETAIL</f:facet>#{blog.detail}
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+
