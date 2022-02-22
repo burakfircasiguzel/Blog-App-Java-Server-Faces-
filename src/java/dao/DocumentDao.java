@@ -9,9 +9,12 @@ import entity.Document;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import util.DbConnection;
 
 /**
@@ -23,6 +26,9 @@ public class DocumentDao {
     private DbConnection db;
     private Connection c;
 
+    public DocumentDao() {
+    }
+    
     public DbConnection getDb() {
         if (this.db == null) {
             this.db = new DbConnection();
@@ -100,8 +106,19 @@ public class DocumentDao {
         }
         return document_id;
     }
-
-    public DocumentDao() {
+    
+    public String find(int blogId){
+        String s = "";
+        try {
+            PreparedStatement pst = this.getC().prepareStatement("SELECT * FROM document WHERE blog_id="+blogId);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                s = rs.getString("name"); ;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DocumentDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return s;
     }
 
 }

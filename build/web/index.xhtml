@@ -21,6 +21,7 @@
                                 <h:commandLink action="#{BlogController.categoryController.update(category)}"> <span class="badge badge-warning">#{category.name}</span> </h:commandLink>                                  
                             </ui:repeat>
                             <br/>
+                            <img class="img-fluid" src="img/#{blog.image}" alt="alt"/>
                             <h:commandLink styleClass="stretched-link" value="Read More" action="#{BlogController.readMore(blog)}" />
                         </h:form>
                     </div>

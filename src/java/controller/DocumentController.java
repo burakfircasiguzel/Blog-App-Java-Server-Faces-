@@ -30,7 +30,7 @@ public class DocumentController implements Serializable {
 
     private Part doc;
 
-    private final String uploadTo = "/Users/ELOCK2/Desktop/upload/";
+    private String uploadTo = "/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/img/";
 
     public void upload() {
         try {
@@ -108,5 +108,6 @@ public class DocumentController implements Serializable {
     public void setDoc(Part doc) {
         this.doc = doc;
     }
-
+    
+    
 }

@@ -64,6 +64,17 @@ public class BlogDao {
         this.categoryDao = categoryDao;
     }
 
+    public DocumentDao getDocumentDao() {
+        if (this.documentDao == null) {
+            this.documentDao = new DocumentDao();
+        }
+        return documentDao;
+    }
+
+    public void setDocumentDao(DocumentDao documentDao) {
+        this.documentDao = documentDao;
+    }
+
     public List<Blog> getBlogs() {
         List<Blog> blogList = new ArrayList();
         try {
@@ -76,7 +87,9 @@ public class BlogDao {
                 tmp.setDetail(rs.getString("detail"));
                 tmp.setId(rs.getInt("id"));
                 tmp.setBlogCategories(this.getCategoryDao().getBlogCategories(tmp.getId()));
+                tmp.setImage(this.getDocumentDao().find((int) tmp.getId()));
                 //System.out.println(tmp.getBlogCategories().toString());
+                System.out.println("IMAGE: " +tmp.getImage());
                 blogList.add(tmp);
             }
 
