@@ -5,12 +5,12 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 >
     <div class="d-flex justify-content-center">
-        <nav class="nav nav-pills nav-justified btn-group d-flex justify-content-center">
-             <h:link  styleClass="btn btn-info  nav-link" outcome="faces/index"><i class="fas fa-home"></i> Anasayfa</h:link>
+        <nav class="navbar navbar-light bg-light btn-group d-flex justify-content-center">
+             <h:link  styleClass="btn btn-info  nav-link" outcome="faces/index"><i class="fas fa-home"></i> Home</h:link>
              <h:link rendered="#{UserController.user.auth == false }" styleClass="btn btn-primary  nav-link" outcome="faces/login" ><i class="fas fa-sign-in-alt"></i> Login</h:link>
              <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-success  nav-link" outcome="faces/admin/blogs"><i class="fas fa-sign-in-alt"></i> Admin</h:link>
              <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-danger  nav-link" outcome="faces/logout"><i class="fas fa-sign-in-alt"></i> Logout</h:link>
-            <h:link styleClass="btn btn-warning  nav-link" outcome="/document/document.xhtml"><i class="fas fa-plus"></i> Document</h:link>
+             <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-primary  nav-link" outcome="/admin/add-blog.xhtml"  value="Add Blog "><i class="fa-solid fa-plus"></i></h:link>
         </nav>
     </div>
 </ui:composition>

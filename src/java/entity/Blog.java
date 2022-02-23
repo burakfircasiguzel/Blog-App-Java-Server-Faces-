@@ -17,6 +17,8 @@ public class Blog {
     private String detail;
     private String image;
     private List<Category> blogCategories;
+    private boolean add = false;
+    private boolean edit = false;
     
     public Blog() {
     }
@@ -71,6 +73,22 @@ public class Blog {
     @Override
     public String toString() {
         return "Blog{" + "id=" + id + ", title=" + title + ", detail=" + detail + ", image=" + image + ", blogCategories=" + blogCategories + '}';
+    }
+
+    public boolean isAdd() {
+        return add;
+    }
+
+    public void setAdd(boolean add) {
+        this.add = add;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
     }
    
     

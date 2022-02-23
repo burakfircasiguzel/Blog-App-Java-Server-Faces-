@@ -12,12 +12,10 @@
         <div class="d-flex justify-content-center">
             <nav class="nav nav-pills nav-justified btn-group d-flex justify-content-center">
                 <h:link  styleClass="btn btn-info  nav-link" outcome="/faces/index"  value="Anasayfa"/>
-                <h:link rendered="#{UserController.user.auth == false }" styleClass="btn btn-primary  nav-link" outcome="/faces/login"  value="Giris Yap"/>
+                <h:link rendered="#{UserController.user.auth == false }" styleClass="btn btn-primary  nav-link" outcome="/faces/login"  value="Login"/>
                 <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-success  nav-link" outcome="/faces/admin/blogs"  value="Admin"/>
-                <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-danger  nav-link" outcome="/faces/logout"  value="Cikis Yap"/>
-                <h:link styleClass="btn btn-warning  nav-link" outcome="/document/document.xhtml"  value="Document"/>
-                <h:link styleClass="btn btn-success  nav-link" outcome="/admin/add-blog.xhtml"  value="Add Blog"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></h:link>
-            </nav>
+                <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-danger  nav-link" outcome="/faces/logout"  value="Logout"/>
+                <h:link styleClass="btn btn-primary  nav-link" outcome="/admin/add-blog.xhtml"  value="Add Blog "><i class="fa-solid fa-plus"></i></h:link> </nav>
         </div>
     </ui:define>
     <ui:define name="content">
@@ -38,11 +36,11 @@
                         <f:selectItems value="#{BlogController.categoryController.categoryList}" var="category" itemValue="#{category}" itemLabel="#{category.name}" />
                     </h:selectManyMenu> 
                 </div>
-                
+
                 <div class="form-group">
                     <h:inputFile value="#{BlogController.documentController.doc}" styleClass="form-control" />
                 </div>
-                    
+
                 <div class="form-group">
                     <div class="btn-group">
                         <h:commandButton action="#{BlogController.create}" value="Add" styleClass="btn btn-primary"/>

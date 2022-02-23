@@ -26,16 +26,16 @@ public class BlogController implements Serializable {
     private Blog blog;
     private BlogDao blogDao;
     private List<Blog> blogList;
-    
+
     private Document document;
     private DocumentDao documentDao;
 
     @ManagedProperty(value = "#{CategoryController}")
     private CategoryController categoryController;
-    
+
     @ManagedProperty(value = "#{DocumentController}")
     private DocumentController documentController;
-    
+
     public Blog getBlog() {
         if (this.blog == null) {
             this.blog = new Blog();
@@ -103,13 +103,30 @@ public class BlogController implements Serializable {
     public void setDocumentDao(DocumentDao documentDao) {
         this.documentDao = documentDao;
     }
-      
+
     public void create() {
-        
-        int blog_id = this.getBlogDao().create(this.blog);
-        this.getDocumentController().uploadWithBlogId(blog_id);
+        if(this.blog.isEdit()){
+            int blog_id = this.getBlogDao().edit(this.blog);
+            this.getDocumentController().uploadWithBlogId(blog_id);
+        }else{
+            int blog_id = this.getBlogDao().create(this.blog);
+            this.getDocumentController().uploadWithBlogId(blog_id);
+        }          
     }
 
- 
+    public void deleteConfirm(Blog blog) {
+        this.blog = blog;
+        System.out.println(this.blog.toString());
+    }
+
+    public void delete() {
+        System.out.println("DELETED");
+    }
     
+    public String edit(Blog blog){
+        this.blog = blog;
+        this.blog.setEdit(true);
+        System.out.println("EDIT");
+        return "add-blog.xhtml";
+    }
 }

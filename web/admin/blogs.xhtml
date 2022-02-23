@@ -12,16 +12,15 @@
         <div class="d-flex justify-content-center">
             <nav class="nav nav-pills nav-justified btn-group d-flex justify-content-center">
                 <h:link  styleClass="btn btn-info  nav-link" outcome="/faces/index"  value="Anasayfa"/>
-                <h:link rendered="#{UserController.user.auth == false }" styleClass="btn btn-primary  nav-link" outcome="/faces/login"  value="Giris Yap"/>
+                <h:link rendered="#{UserController.user.auth == false }" styleClass="btn btn-primary  nav-link" outcome="/faces/login"  value="Login"/>
                 <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-success  nav-link" outcome="/faces/admin/blogs"  value="Admin"/>
-                <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-danger  nav-link" outcome="/faces/logout"  value="Cikis Yap"/>
-                <h:link styleClass="btn btn-warning  nav-link" outcome="/document/document.xhtml"  value="Document"/>
-                <h:link styleClass="btn btn-success  nav-link" outcome="/admin/add-blog.xhtml"  value="Add Blog"/>
+                <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-danger  nav-link" outcome="/faces/logout"  value="Logout"/>
+                <h:link styleClass="btn btn-primary  nav-link" outcome="/admin/add-blog.xhtml"  value="Add Blog "><i class="fa-solid fa-plus"></i></h:link>
             </nav>
         </div>
     </ui:define>
     <ui:define name="content">
-        <div class="col-md-6">  
+        <div class="col-md-12">  
             <h:form id="category-table">
                 <h:dataTable value="#{BlogController.blogList}" var="blog" styleClass="table table-striped">
                     <h:column>
@@ -33,7 +32,16 @@
                     <h:column>
                         <f:facet name="header">DETAIL</f:facet>#{blog.detail}
                     </h:column>
-
+                    <h:column>
+                        <f:facet name="header">EDIT</f:facet>
+                        
+                            <h:commandButton styleClass="btn btn-warning  nav-link" action="#{BlogController.edit(blog)}" value="EDIT"/>
+                        
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">DELETE</f:facet>
+                       <h:link styleClass="btn btn-danger  nav-link" outcome="/faces/login"  value="DELETE"/>
+                    </h:column>                 
                 </h:dataTable>
             </h:form>
         </div>

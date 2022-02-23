@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ELOCK2
  */
-@WebServlet(name = "FileServlet", urlPatterns = {"/img/*"})
+@WebServlet(name = "FileServlet", urlPatterns = {"/img/*", "/faces/img/*"})
 public class FileServlet extends HttpServlet {
 
     
