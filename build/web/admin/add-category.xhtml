@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">
+        Admin - Blogs
+    </ui:define>
+    <ui:define name="menu">
+   <ui:include src="/template/include/menu.xhtml"/>
+    </ui:define>
+    <ui:define name="content">
+        <div class="col-md-6">  
+            <h:form enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="inputTitle">Title</label>
+                    <h:inputText value="#{CategoryController.category.name}" styleClass="form-control" id="inputTitle"/>
+                </div>
+                <div class="form-group">
+                    <div class="btn-group">
+                        <h:commandButton action="#{CategoryController.confirm}" value="#{CategoryController.category.buttonText()}" styleClass="btn btn-primary"/>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+
