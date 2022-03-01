@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/web/index.xhtml</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/controller/BlogController.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/web/category.xhtml</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/dao/CategoryDao.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/entity/Category.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/controller/CategoryController.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -9,14 +9,7 @@
         Admin - Blogs
     </ui:define>
     <ui:define name="menu">
-        <div class="d-flex justify-content-center">
-            <nav class="nav nav-pills nav-justified btn-group d-flex justify-content-center">
-                <h:link  styleClass="btn btn-info  nav-link" outcome="/faces/index"  value="Anasayfa"/>
-                <h:link rendered="#{UserController.user.auth == false }" styleClass="btn btn-primary  nav-link" outcome="/faces/login"  value="Login"/>
-                <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-success  nav-link" outcome="/faces/admin/blogs"  value="Admin"/>
-                <h:link rendered="#{UserController.user.auth == true }" styleClass="btn btn-danger  nav-link" outcome="/faces/logout"  value="Logout"/>
-                <h:link styleClass="btn btn-primary  nav-link" outcome="/admin/add-blog.xhtml"  value="Add Blog "><i class="fa-solid fa-plus"></i></h:link> </nav>
-        </div>
+   <ui:include src="/template/include/menu.xhtml"/>
     </ui:define>
     <ui:define name="content">
         <div class="col-md-6">  

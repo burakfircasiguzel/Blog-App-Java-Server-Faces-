@@ -29,7 +29,7 @@ public class UserController implements Serializable{
             this.getUser().setAuth(true);
             return "/admin/blogs?faces-redirect=true";
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hatali kullanici adi veya sifre")); 
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong username or password")); 
             return "/login";
         }
     }

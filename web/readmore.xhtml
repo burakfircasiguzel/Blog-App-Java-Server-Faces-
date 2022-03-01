@@ -6,12 +6,31 @@
                 template="/template/template.xhtml"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <ui:define name="title">#{BlogController.blog.title} - JSF Blog</ui:define>
     <ui:define name="content">
 
-           <h2>Title: #{BlogController.blog.title}</h2>
-           <h3>Id: #{BlogController.blog.id}</h3>
-           <h4>Detail: #{BlogController.blog.detail}</h4>
-        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">#{BlogController.blog.title}</h3>
+                        <p class="mb-auto">#{BlogController.blog.detail}</p> 
+                        <br/>
+                        <img class="img-thumbnail" src="img/#{BlogController.blog.image}" alt="alt"/>
+                        <br/>
+                        <br/>
+                        <div class="row"> 
+                            <p>Categories: </p>
+                            <ui:repeat var="category" value="#{BlogController.blog.blogCategories}">    
+                                <h:form>
+                                    <h:commandLink action="#{BlogController.categoryController.update(category)}"> <span class="badge badge-warning badge-xl">#{category.name}</span> </h:commandLink>                                  
+                                </h:form>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ui:define>
 </ui:composition>
 

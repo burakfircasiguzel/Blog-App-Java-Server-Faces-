@@ -16,6 +16,8 @@ public class Category {
     private int id;
     private String name;
     private List<Blog> categoryBlogs;
+    private boolean edit = false;
+    private boolean notFoundRelatedBlog = false;
 
     public Category() {
     }
@@ -68,7 +70,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{" + "id=" + id + ", name=" + name + '}';
+        return name;
     }
 
     public List<Blog> getCategoryBlogs() {
@@ -78,6 +80,29 @@ public class Category {
     public void setCategoryBlogs(List<Blog> categoryBlogs) {
         this.categoryBlogs = categoryBlogs;
     }
-    
-    
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+
+    public String buttonText() {
+        if (isEdit()) {
+            return "Edit";
+        } else {
+            return "Add";
+        }
+    }
+
+    public boolean isNotFoundRelatedBlog() {
+        return notFoundRelatedBlog;
+    }
+
+    public void setNotFoundRelatedBlog(boolean notFoundRelatedBlog) {
+        this.notFoundRelatedBlog = notFoundRelatedBlog;
+    }
+
 }

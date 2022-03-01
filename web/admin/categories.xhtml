@@ -16,28 +16,22 @@
     <ui:define name="content">
         <div class="col-md-12">  
             <h:form id="category-table">
-                <h:dataTable value="#{BlogController.blogList}" var="blog" styleClass="table table-striped">
+                <h:dataTable value="#{CategoryController.categoryList}" var="category" styleClass="table table-striped">
                     <h:column>
-                        <f:facet name="header">ID</f:facet>#{blog.id}
+                        <f:facet name="header">ID</f:facet>#{category.id}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">TITLE</f:facet>#{blog.title}    
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">DETAIL</f:facet>#{blog.detail}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">CATEGORY</f:facet>#{blog.blogCategories}
+                        <f:facet name="header">TITLE</f:facet>#{category.name}    
                     </h:column>
                     <h:column>
                         <f:facet name="header">EDIT</f:facet>
                         
-                            <h:commandButton styleClass="btn btn-warning  nav-link" action="#{BlogController.edit(blog)}" value="EDIT"/>
+                        <h:commandButton styleClass="btn btn-warning  nav-link" action="#{CategoryController.edit(category)}" value="EDIT"/>
                         
                     </h:column>
                     <h:column>
                         <f:facet name="header">DELETE</f:facet>
-                        <h:commandButton styleClass="btn btn-danger  nav-link" action="#{BlogController.delete(blog)}" onclick="return confirm('Are you sure?');" value="DELETE"/>
+                        <h:commandButton styleClass="btn btn-danger  nav-link" action="#{CategoryController.delete(category)}" onclick="return confirm('Are you sure?');" value="DELETE"/>
                     </h:column>                 
                 </h:dataTable>
             </h:form>

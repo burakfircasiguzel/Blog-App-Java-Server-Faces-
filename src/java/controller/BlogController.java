@@ -104,14 +104,13 @@ public class BlogController implements Serializable {
         this.documentDao = documentDao;
     }
 
-    public void create() {
-        if(this.blog.isEdit()){
-            int blog_id = this.getBlogDao().edit(this.blog);
-            this.getDocumentController().uploadWithBlogId(blog_id);
-        }else{
-            int blog_id = this.getBlogDao().create(this.blog);
-            this.getDocumentController().uploadWithBlogId(blog_id);
-        }          
+    public String create() {
+        //int blog_id = this.getBlogDao().edit(this.blog);
+        System.out.println("create");
+        int blog_id = this.getBlogDao().create(this.blog);
+        this.getDocumentController().uploadWithBlogId(blog_id);
+        clearBlog();
+        return "blogs.html";
     }
 
     public void deleteConfirm(Blog blog) {
@@ -122,11 +121,29 @@ public class BlogController implements Serializable {
     public void delete() {
         System.out.println("DELETED");
     }
-    
-    public String edit(Blog blog){
+
+    public String edit(Blog blog) {
         this.blog = blog;
-        this.blog.setEdit(true);
-        System.out.println("EDIT");
+        return "edit-blog.xhtml";
+    }
+    
+    public String update(Blog blog) {
+        int blog_id = this.getBlogDao().edit(this.blog);
+        this.getDocumentController().uploadWithBlogId(blog_id);
+        clearBlog();
+        return "blogs.xhtml";
+    }
+
+    public String delete(Blog blog) {
+        this.blog = blog;
+        System.out.println("BLOG DELETE");
+        this.getBlogDao().delete(blog);
+        clearBlog();
         return "add-blog.xhtml";
     }
+
+    public void clearBlog() {
+        this.blog = new Blog();
+    }
+
 }

@@ -113,7 +113,8 @@ public class DocumentDao {
             PreparedStatement pst = this.getC().prepareStatement("SELECT * FROM document WHERE blog_id="+blogId);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                s = rs.getString("name"); ;
+                s = rs.getString("name");
+               // System.out.println(s);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DocumentDao.class.getName()).log(Level.SEVERE, null, ex);

@@ -3,30 +3,42 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                template="/template/template.xhtml">
     <ui:define name="title">
-        Category
+        Home - JSF Blog
     </ui:define>
     <ui:define name="content">
-            
+        <div class="row">
+              
+            <ui:repeat var="blog" value="#{CategoryController.categoryBlogList}">
+                <div class="col-md-12">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <h:form>
+                                <h3 class="mb-0">#{blog.title}</h3>
+                                <p class="mb-auto">#{blog.detail}</p> 
+                                <p class="mb-auto">IMAGE: #{blog.image}</p> 
+                                <br/>
+                                <img class="img-fluid" style="max-height: 400;max-width: 600" src="img/#{blog.image}" alt="alt"/>
+                                <br/>
+                                <h:commandButton  class="btn btn-info mt-2" value="Read More" action="#{BlogController.readMore(blog)}" />
+                            </h:form>
+                            <br/>
+                            <div class="row"> 
+                            <p>Categories: </p>
+                            <ui:repeat var="category" value="#{blog.blogCategories}">    
+                                <h:form>
+                                    <h:commandLink action="#{BlogController.categoryController.update(category)}"> <span class="badge badge-warning badge-xl">#{category.name}</span> </h:commandLink>                                  
+                                </h:form>
+                            </ui:repeat>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:repeat>
+             <h:outputText rendered="#{CategoryController.category.notFoundRelatedBlog}" value="Not Found Related Blog" />    
+        </div>
+    </ui:define>
 
-            <f:metadata>
-                <f:viewAction action="#{CategoryController.onload}" />
-            </f:metadata>
-            <h:dataTable value="#{CategoryController.categoryBlogList}" var="blog" styleClass="table table-striped">
-                <h:column>
-                    <f:facet name="header">ID</f:facet>#{blog.id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">TITLE</f:facet>#{blog.title}    
-                </h:column>
-                <h:column>
-                    <f:facet name="header">DETAIL</f:facet>#{blog.detail}
-                </h:column>
-            </h:dataTable>
-
-        </ui:define>
-   
 </ui:composition>
 

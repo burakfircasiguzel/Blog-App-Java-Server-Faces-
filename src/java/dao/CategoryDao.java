@@ -8,6 +8,7 @@ package dao;
 import entity.Blog;
 import entity.Category;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,6 +26,7 @@ public class CategoryDao {
 
     private DbConnection db;
     private Connection c;
+    private DocumentDao documentDao;
 
     public DbConnection getDb() {
         if (this.db == null) {
@@ -48,15 +50,24 @@ public class CategoryDao {
         this.c = c;
     }
 
+    public DocumentDao getDocumentDao() {
+        if (this.documentDao == null) {
+            this.documentDao = new DocumentDao();
+        }
+        return documentDao;
+    }
+
+    public void setDocumentDao(DocumentDao documentDao) {
+        this.documentDao = documentDao;
+    }
+
     public List<Category> getCategories() {
         List<Category> categoryList = new ArrayList();
         try {
             Statement st = this.getC().createStatement();
             ResultSet rs = st.executeQuery("select * from category");
             while (rs.next()) {
-                //System.out.println(rs.getString("name"));
                 Category tmp = new Category(rs.getInt("id"), rs.getString("name"));
-                //System.out.println(tmp);
                 categoryList.add(tmp);
             }
 
@@ -109,12 +120,13 @@ public class CategoryDao {
                 b.setTitle(rs.getString("title"));
                 b.setDetail(rs.getString("detail"));
                 b.setId(rs.getLong("id"));
+                b.setBlogCategories(this.getBlogCategories(b.getId()));
+                b.setImage(this.getDocumentDao().find((int) b.getId()));
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-       
 
         return b;
     }
@@ -127,13 +139,43 @@ public class CategoryDao {
 
             while (rs.next()) {
                 blogCategories.add(this.findBlog(rs.getInt("blog_id")));
-                System.out.println(this.findBlog(rs.getInt("blog_id")).getTitle());
+                //System.out.println(this.findBlog(rs.getInt("blog_id")).getTitle());
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(blogCategories.size());
+        //System.out.println(blogCategories.size());
         return blogCategories;
+    }
+
+    public void delete(Category category) {
+        try {
+            PreparedStatement pst = this.getC().prepareStatement("DELETE FROM blog_category WHERE blog_id=" + category.getId());
+            pst.executeUpdate();
+            pst = this.getC().prepareStatement("DELETE FROM category WHERE id=" + category.getId());
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void update(Category category) {
+        try {
+            PreparedStatement pst = this.getC().prepareStatement("UPDATE category SET name='" + category.getName() + "' WHERE id=" + category.getId());
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void insert(Category category) {
+        try {
+            PreparedStatement pst = this.getC().prepareStatement("INSERT INTO category (name) VALUES (?)");
+            pst.setString(1, category.getName());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

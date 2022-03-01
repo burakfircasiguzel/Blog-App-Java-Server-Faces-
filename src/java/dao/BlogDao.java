@@ -88,7 +88,6 @@ public class BlogDao {
                 tmp.setId(rs.getInt("id"));
                 tmp.setBlogCategories(this.getCategoryDao().getBlogCategories(tmp.getId()));
                 tmp.setImage(this.getDocumentDao().find((int) tmp.getId()));
-                //System.out.println(tmp.getBlogCategories().toString());
                 blogList.add(tmp);
             }
 
@@ -117,9 +116,7 @@ public class BlogDao {
                     pst.setInt(2, c.getId());
                     pst.executeUpdate();
                 }
-            }
-
-            //documentDao.insertWithBlogId(document,blog_id);   
+            }   
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -144,6 +141,17 @@ public class BlogDao {
             Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return (int) blog.getId();
+    }
+
+    public void delete(Blog blog) {
+        try {
+            PreparedStatement pst = this.getC().prepareStatement("DELETE FROM blog WHERE id=" + blog.getId());
+            pst.executeUpdate();
+            pst = this.getC().prepareStatement("DELETE FROM blog_category WHERE blog_id=" + blog.getId());
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

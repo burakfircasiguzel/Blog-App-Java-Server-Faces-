@@ -5,9 +5,19 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/template/template.xhtml">
     <ui:define name="title">
-        Home
+        Home - JSF Blog
     </ui:define>
     <ui:define name="content">
+        <div class="row">
+            <h4>Categories: </h4>
+            <ui:repeat var="category" value="#{CategoryController.categoryList}">    
+                <h:form>
+                    <h:commandLink action="#{CategoryController.update(category)}"><h4><span class="badge badge-warning badge-x3 ml-2"> #{category.name} </span> </h4> </h:commandLink>                                  
+                </h:form>
+            </ui:repeat>
+
+        </div>
+
         <div class="row">
             <ui:repeat var="blog" value="#{BlogController.blogList}">
                 <div class="col-md-12">
@@ -17,30 +27,23 @@
                                 <h3 class="mb-0">#{blog.title}</h3>
                                 <p class="mb-auto">#{blog.detail}</p> 
                                 <br/>
-                                <img class="img-fluid" src="img/#{blog.image}" alt="alt"/>
+                                <img class="img-fluid" style="max-height: 400;max-width: 600" src="img/#{blog.image}" alt="alt"/>
                                 <br/>
-                                <h:commandButton  class="btn btn-info" value="Read More" action="#{BlogController.readMore(blog)}" />
+                                <h:commandButton  class="btn btn-info mt-2" value="Read More" action="#{BlogController.readMore(blog)}" />
                             </h:form>
                             <br/>
                             <div class="row"> 
-                            <p>Categories: </p>
-                            <ui:repeat var="category" value="#{blog.blogCategories}">    
-                                <h:form>
-                                    <h:commandLink action="#{BlogController.categoryController.update(category)}"> <span class="badge badge-warning badge-xl">#{category.name}</span> </h:commandLink>                                  
-                                </h:form>
-                            </ui:repeat>
+                                <p>Categories: </p>
+                                <ui:repeat var="category" value="#{blog.blogCategories}">    
+                                    <h:form>
+                                        <h:commandLink action="#{BlogController.categoryController.update(category)}"> <span class="badge badge-warning badge-xl">#{category.name}</span> </h:commandLink>                                  
+                                    </h:form>
+                                </ui:repeat>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
-
-
-
             </ui:repeat>
-
         </div>
     </ui:define>
 

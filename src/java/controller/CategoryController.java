@@ -27,9 +27,7 @@ public class CategoryController implements Serializable {
     private CategoryDao categoryDao;
     private List<Category> categoryList;
     private List<Blog> categoryBlogList;
-    
-    
-    
+
     public CategoryController() {
         this.categoryList = new ArrayList();
         this.categoryDao = new CategoryDao();
@@ -71,14 +69,17 @@ public class CategoryController implements Serializable {
         this.categoryList = categoryList;
     }
 
-    public String update(Category c) {
+    public String edit(Category c) {
         this.category = c;
-        System.out.println(c.toString());
-        return "category?faces-redirect=true";
+        this.category.setEdit(true);
+        return "edit-category";
     }
 
     public List<Blog> getCategoryBlogList() {
         this.categoryBlogList = this.getCategoryDao().getCategoryBlogs(this.getCategory());
+        if(this.getCategoryDao().getCategoryBlogs(this.getCategory()).size() < 1 || this.getCategoryDao().getCategoryBlogs(this.getCategory()) == null){
+            this.category.setNotFoundRelatedBlog(true);
+        }
         return categoryBlogList;
     }
 
@@ -92,5 +93,33 @@ public class CategoryController implements Serializable {
         } else {
             return "category";
         }
+    }
+
+    public String delete(Category category) {
+        this.category = category;
+        this.categoryDao.delete(category);
+        clearCategory();
+        return "categories.xhtml";
+    }
+
+    public void clearCategory() {
+        this.category = new Category();
+    }
+
+    public String confirm() {
+        if (this.category.isEdit()) {
+            this.categoryDao.update(this.category);
+        } else {
+            this.categoryDao.insert(this.category);
+            clearCategory();
+        }
+        clearCategory();
+        return "categories.xhtml";
+    }
+          
+    public String update(Category category){
+        this.category = category;
+        System.out.println(category);
+        return "category.xhtml";
     }
 }
