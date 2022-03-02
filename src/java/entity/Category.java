@@ -16,9 +16,10 @@ public class Category {
     private int id;
     private String name;
     private List<Blog> categoryBlogs;
-    private boolean edit = false;
     private boolean notFoundRelatedBlog = false;
-
+    private int blogCount = 0;
+    
+    
     public Category() {
     }
 
@@ -81,21 +82,6 @@ public class Category {
         this.categoryBlogs = categoryBlogs;
     }
 
-    public boolean isEdit() {
-        return edit;
-    }
-
-    public void setEdit(boolean edit) {
-        this.edit = edit;
-    }
-
-    public String buttonText() {
-        if (isEdit()) {
-            return "Edit";
-        } else {
-            return "Add";
-        }
-    }
 
     public boolean isNotFoundRelatedBlog() {
         return notFoundRelatedBlog;
@@ -105,4 +91,13 @@ public class Category {
         this.notFoundRelatedBlog = notFoundRelatedBlog;
     }
 
+    public int getBlogCount() {
+        return blogCount;
+    }
+
+    public void setBlogCount(int blogCount) {
+        this.blogCount = blogCount;
+    }
+    
+    
 }

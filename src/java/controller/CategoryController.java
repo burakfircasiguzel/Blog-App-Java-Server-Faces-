@@ -71,13 +71,12 @@ public class CategoryController implements Serializable {
 
     public String edit(Category c) {
         this.category = c;
-        this.category.setEdit(true);
         return "edit-category";
     }
 
     public List<Blog> getCategoryBlogList() {
         this.categoryBlogList = this.getCategoryDao().getCategoryBlogs(this.getCategory());
-        if(this.getCategoryDao().getCategoryBlogs(this.getCategory()).size() < 1 || this.getCategoryDao().getCategoryBlogs(this.getCategory()) == null){
+        if (this.getCategoryDao().getCategoryBlogs(this.getCategory()).size() < 1 || this.getCategoryDao().getCategoryBlogs(this.getCategory()) == null) {
             this.category.setNotFoundRelatedBlog(true);
         }
         return categoryBlogList;
@@ -106,20 +105,21 @@ public class CategoryController implements Serializable {
         this.category = new Category();
     }
 
-    public String confirm() {
-        if (this.category.isEdit()) {
-            this.categoryDao.update(this.category);
-        } else {
-            this.categoryDao.insert(this.category);
-            clearCategory();
-        }
+    public String create() {
+        this.categoryDao.insert(this.category);
         clearCategory();
         return "categories.xhtml";
     }
-          
-    public String update(Category category){
+
+    public String edit() {
         this.category = category;
         System.out.println(category);
         return "category.xhtml";
+    }
+
+    public String update(Category category) {
+        this.categoryDao.update(this.category);
+        clearCategory();
+        return "categories.xhtml";
     }
 }

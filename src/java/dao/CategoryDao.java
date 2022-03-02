@@ -42,8 +42,12 @@ public class CategoryDao {
         try {
             Statement st = DbFunctions.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from category");
+            Category tmp;
             while (rs.next()) {
-                Category tmp = new Category(rs.getInt("id"), rs.getString("name"));
+                tmp = new Category();
+                tmp.setId(rs.getInt("id"));
+                tmp.setName(rs.getString("name"));
+                tmp.setBlogCount(getBlogCount(tmp.getId()));
                 categoryList.add(tmp);
             }
             rs.close();
@@ -127,6 +131,22 @@ public class CategoryDao {
         }
         //System.out.println(blogCategories.size());
         return blogCategories;
+    }
+
+    public int getBlogCount(int categoryId) {
+        int count = 0;
+        try {
+            Statement st = DbFunctions.connect().createStatement();
+            ResultSet rs = st.executeQuery("SELECT COUNT(*) as c FROM blog_category WHERE category_id=" + categoryId);
+            while (rs.next()) {
+                count = rs.getInt("c");
+            }
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return count;
     }
 
     public void delete(Category category) {

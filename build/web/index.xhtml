@@ -15,7 +15,6 @@
                     <h:commandLink action="#{CategoryController.update(category)}"><h4><span class="badge badge-warning badge-x3 ml-2"> #{category.name} </span> </h4> </h:commandLink>                                  
                 </h:form>
             </ui:repeat>
-
         </div>
 
         <div class="row">
@@ -36,7 +35,7 @@
                                 <p>Categories: </p>
                                 <ui:repeat var="category" value="#{blog.blogCategories}">    
                                     <h:form>
-                                        <h:commandLink action="#{BlogController.categoryController.update(category)}"> <span class="badge badge-warning badge-xl">#{category.name}</span> </h:commandLink>                                  
+                                        <h:commandLink action="#{BlogController.categoryController.update(category)}"> <span class="badge badge-warning badge-x2 ml-2">#{category.name}</span> </h:commandLink>                                  
                                     </h:form>
                                 </ui:repeat>
                             </div>
