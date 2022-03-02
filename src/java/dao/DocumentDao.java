@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import util.DbConnection;
+import util.DbFunctions;
 
 /**
  *
@@ -23,38 +23,13 @@ import util.DbConnection;
  */
 public class DocumentDao {
 
-    private DbConnection db;
-    private Connection c;
-
     public DocumentDao() {
-    }
-    
-    public DbConnection getDb() {
-        if (this.db == null) {
-            this.db = new DbConnection();
-        }
-        return db;
-    }
-
-    public void setDb(DbConnection db) {
-        this.db = db;
-    }
-
-    public Connection getC() {
-        if (this.c == null) {
-            this.c = getDb().connect();
-        }
-        return c;
-    }
-
-    public void setC(Connection c) {
-        this.c = c;
     }
 
     public List<Document> findAll() {
         List<Document> dList = new ArrayList();
         try {
-            PreparedStatement pst = this.getC().prepareStatement("SELECT * FROM document");
+            PreparedStatement pst = DbFunctions.connect().prepareStatement("SELECT * FROM document");
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
@@ -65,6 +40,8 @@ public class DocumentDao {
                 d.setFileType(rs.getString("type"));
                 dList.add(d);
             }
+            rs.close();
+            pst.close();
 
         } catch (Exception e) {
         }
@@ -74,12 +51,12 @@ public class DocumentDao {
     public void insert(Document d) {
         String query = "INSERT INTO document (path, name, type) VALUES (?,?,?)";
         try {
-            PreparedStatement pst = this.getC().prepareStatement(query);
+            PreparedStatement pst = DbFunctions.connect().prepareStatement(query);
             pst.setString(1, d.getFilePath());
             pst.setString(2, d.getFileName());
             pst.setString(3, d.getFileType());
             pst.executeUpdate();
-
+            pst.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -89,7 +66,7 @@ public class DocumentDao {
         String query = "INSERT INTO document (path, name, type, blog_id) VALUES (?,?,?,?)";
         int document_id = 0;
         try {
-            PreparedStatement pst = this.getC().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pst = DbFunctions.connect().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, d.getFilePath());
             pst.setString(2, d.getFileName());
             pst.setString(3, d.getFileType());
@@ -100,22 +77,24 @@ public class DocumentDao {
             if (gk.next()) {
                 document_id = gk.getInt(1);
             }
-
+            pst.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return document_id;
     }
-    
-    public String find(int blogId){
+
+    public String find(int blogId) {
         String s = "";
         try {
-            PreparedStatement pst = this.getC().prepareStatement("SELECT * FROM document WHERE blog_id="+blogId);
+            PreparedStatement pst = DbFunctions.connect().prepareStatement("SELECT * FROM document WHERE blog_id=" + blogId);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 s = rs.getString("name");
-               // System.out.println(s);
+                // System.out.println(s);
             }
+            rs.close();
+            pst.close();
         } catch (SQLException ex) {
             Logger.getLogger(DocumentDao.class.getName()).log(Level.SEVERE, null, ex);
         }

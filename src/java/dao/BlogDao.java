@@ -7,8 +7,6 @@ package dao;
 
 import entity.Blog;
 import entity.Category;
-import entity.Document;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import util.DbConnection;
+import util.DbFunctions;
 
 /**
  *
@@ -25,33 +23,8 @@ import util.DbConnection;
  */
 public class BlogDao {
 
-    private DbConnection db;
-    private Connection c;
-
     private CategoryDao categoryDao;
     private DocumentDao documentDao;
-
-    public DbConnection getDb() {
-        if (this.db == null) {
-            this.db = new DbConnection();
-        }
-        return db;
-    }
-
-    public void setDb(DbConnection db) {
-        this.db = db;
-    }
-
-    public Connection getC() {
-        if (this.c == null) {
-            this.c = getDb().connect();
-        }
-        return c;
-    }
-
-    public void setC(Connection c) {
-        this.c = c;
-    }
 
     public CategoryDao getCategoryDao() {
         if (this.categoryDao == null) {
@@ -78,7 +51,7 @@ public class BlogDao {
     public List<Blog> getBlogs() {
         List<Blog> blogList = new ArrayList();
         try {
-            Statement st = this.getC().createStatement();
+            Statement st = DbFunctions.connect().createStatement();;
             ResultSet rs = st.executeQuery("select * from blog order by id desc");
             while (rs.next()) {
                 //System.out.println(rs.getString("name"));
@@ -100,7 +73,7 @@ public class BlogDao {
     public int create(Blog blog) {
         int blog_id = 0;
         try {
-            PreparedStatement pst = this.getC().prepareStatement("INSERT INTO blog (title, detail) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pst = DbFunctions.connect().prepareStatement("INSERT INTO blog (title, detail) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, blog.getTitle());
             pst.setString(2, blog.getDetail());
             pst.executeUpdate();
@@ -111,12 +84,12 @@ public class BlogDao {
             }
             if (blog_id > 0) {
                 for (Category c : blog.getBlogCategories()) {
-                    pst = this.getC().prepareStatement("INSERT INTO blog_category (blog_id, category_id) VALUES (?,?)");
+                    pst = DbFunctions.connect().prepareStatement("INSERT INTO blog_category (blog_id, category_id) VALUES (?,?)");
                     pst.setInt(1, blog_id);
                     pst.setInt(2, c.getId());
                     pst.executeUpdate();
                 }
-            }   
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -125,13 +98,13 @@ public class BlogDao {
 
     public int edit(Blog blog) {
         try {
-            PreparedStatement pst = this.getC().prepareStatement("UPDATE blog SET title='"+blog.getTitle()+"', detail='"+blog.getDetail()+"'  WHERE id=" + blog.getId());
+            PreparedStatement pst = DbFunctions.connect().prepareStatement("UPDATE blog SET title='" + blog.getTitle() + "', detail='" + blog.getDetail() + "'  WHERE id=" + blog.getId());
             pst.executeUpdate();
-            pst = this.getC().prepareStatement("DELETE FROM blog_category WHERE blog_id="+blog.getId());
+            pst = DbFunctions.connect().prepareStatement("DELETE FROM blog_category WHERE blog_id=" + blog.getId());
             pst.executeUpdate();
             if (blog.getId() > 0) {
                 for (Category c : blog.getBlogCategories()) {
-                    pst = this.getC().prepareStatement("INSERT INTO blog_category (blog_id, category_id) VALUES (?,?)");
+                    pst = DbFunctions.connect().prepareStatement("INSERT INTO blog_category (blog_id, category_id) VALUES (?,?)");
                     pst.setInt(1, (int) blog.getId());
                     pst.setInt(2, c.getId());
                     pst.executeUpdate();
@@ -145,10 +118,11 @@ public class BlogDao {
 
     public void delete(Blog blog) {
         try {
-            PreparedStatement pst = this.getC().prepareStatement("DELETE FROM blog WHERE id=" + blog.getId());
+            PreparedStatement pst = DbFunctions.connect().prepareStatement("DELETE FROM blog WHERE id=" + blog.getId());
             pst.executeUpdate();
-            pst = this.getC().prepareStatement("DELETE FROM blog_category WHERE blog_id=" + blog.getId());
+            pst = DbFunctions.connect().prepareStatement("DELETE FROM blog_category WHERE blog_id=" + blog.getId());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException ex) {
             Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
         }

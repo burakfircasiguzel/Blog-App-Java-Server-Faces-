@@ -110,7 +110,7 @@ public class BlogController implements Serializable {
         int blog_id = this.getBlogDao().create(this.blog);
         this.getDocumentController().uploadWithBlogId(blog_id);
         clearBlog();
-        return "blogs.html";
+        return "blogs";
     }
 
     public void deleteConfirm(Blog blog) {
@@ -131,7 +131,7 @@ public class BlogController implements Serializable {
         int blog_id = this.getBlogDao().edit(this.blog);
         this.getDocumentController().uploadWithBlogId(blog_id);
         clearBlog();
-        return "blogs.xhtml";
+        return "blogs";
     }
 
     public String delete(Blog blog) {
@@ -139,7 +139,7 @@ public class BlogController implements Serializable {
         System.out.println("BLOG DELETE");
         this.getBlogDao().delete(blog);
         clearBlog();
-        return "add-blog.xhtml";
+        return "blogs";
     }
 
     public void clearBlog() {
