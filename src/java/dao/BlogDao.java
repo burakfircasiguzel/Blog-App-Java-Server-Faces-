@@ -52,7 +52,7 @@ public class BlogDao {
         List<Blog> blogList = new ArrayList();
         try {
             Statement st = DbFunctions.connect().createStatement();;
-            ResultSet rs = st.executeQuery("select * from blog order by id desc");
+            ResultSet rs = st.executeQuery("SELECT * FROM blog ORDER BY id DESC");
             while (rs.next()) {
                 //System.out.println(rs.getString("name"));
                 Blog tmp = new Blog();

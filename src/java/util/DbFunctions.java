@@ -17,12 +17,17 @@ import java.util.logging.Logger;
 public class DbFunctions {
 
     private static Connection c = null;
-
+    private final static String DB_URL = "localhost"; //db url default localhost or 127.0.0.1
+    private final static String DB_PORT = "3306";  //default MySQL port 3306
+    private final static String DB_NAME = "jsfblog"; //database name in .sql file
+    private final static String DB_USERNAME = "root"; //database username: default root
+    private final static String DB_PASSWORD = ""; //database password
+    
     public static Connection connect() {
         if (c == null) {
             try {
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
-                c = DriverManager.getConnection("jdbc:mysql://localhost:3306/jsfblog?user=root&password=");
+                c = DriverManager.getConnection("jdbc:mysql://"+DB_URL+":"+DB_PORT+"/"+DB_NAME+"?user="+DB_USERNAME+"&password="+DB_PASSWORD+"");
             } catch (Exception ex) {
                 Logger.getLogger(DbFunctions.class.getName()).log(Level.SEVERE, null, ex);
             }

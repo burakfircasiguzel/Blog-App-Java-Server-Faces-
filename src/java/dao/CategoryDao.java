@@ -41,7 +41,7 @@ public class CategoryDao {
         List<Category> categoryList = new ArrayList();
         try {
             Statement st = DbFunctions.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from category");
+            ResultSet rs = st.executeQuery("SELECT * FROM category ORDER BY id DESC");
             Category tmp;
             while (rs.next()) {
                 tmp = new Category();

@@ -9,9 +9,12 @@
         Admin - Blogs
     </ui:define>
     <ui:define name="menu">
-   <ui:include src="/template/include/menu.xhtml"/>
+        <ui:include src="/template/include/menu.xhtml"/>
     </ui:define>
     <ui:define name="content">
+        <f:metadata>
+            <f:viewAction action="#{BlogController.clearBlog()}" />
+        </f:metadata>
         <div class="col-md-6">  
             <h:form enctype="multipart/form-data">
                 <div class="form-group">

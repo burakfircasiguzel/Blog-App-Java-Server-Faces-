@@ -12,7 +12,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -111,10 +110,9 @@ public class CategoryController implements Serializable {
         return "categories.xhtml";
     }
 
-    public String edit() {
+    public String selectCategory(Category category) {
         this.category = category;
-        System.out.println(category);
-        return "category.xhtml";
+        return "category";
     }
 
     public String update(Category category) {

@@ -16,7 +16,7 @@
                         <h3 class="mb-0">#{BlogController.blog.title}</h3>
                         <p class="mb-auto">#{BlogController.blog.detail}</p> 
                         <br/>
-                        <img class="img-thumbnail" src="img/#{BlogController.blog.image}" alt="alt"/>
+                        <h:panelGroup rendered="#{blog.image.length()>0}"><img class="img-thumbnail" src="img/#{BlogController.blog.image}" alt="alt"/></h:panelGroup>
                         <br/>
                         <br/>
                         <div class="row"> 

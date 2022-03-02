@@ -3,7 +3,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/template/template.xhtml">
+                template="/template/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="title">
         Home - JSF Blog
     </ui:define>
@@ -12,7 +13,7 @@
             <h4>Categories: </h4>
             <ui:repeat var="category" value="#{CategoryController.categoryList}">    
                 <h:form>
-                    <h:commandLink action="#{CategoryController.update(category)}"><h4><span class="badge badge-warning badge-x3 ml-2"> #{category.name} </span> </h4> </h:commandLink>                                  
+                    <h:commandLink action="#{CategoryController.selectCategory(category)}"><h4><span class="badge badge-warning badge-x3 ml-2"> #{category.name} </span> </h4> </h:commandLink>                                  
                 </h:form>
             </ui:repeat>
         </div>
@@ -26,7 +27,7 @@
                                 <h3 class="mb-0">#{blog.title}</h3>
                                 <p class="mb-auto">#{blog.detail}</p> 
                                 <br/>
-                                <img class="img-fluid" style="max-height: 400;max-width: 600" src="img/#{blog.image}" alt="alt"/>
+                                <h:panelGroup rendered="#{blog.image.length()>0}"><img  class="img-fluid" style="max-height: 400;max-width: 600" src="img/#{blog.image}" alt="alt"/></h:panelGroup>
                                 <br/>
                                 <h:commandButton  class="btn btn-info mt-2" value="Read More" action="#{BlogController.readMore(blog)}" />
                             </h:form>
