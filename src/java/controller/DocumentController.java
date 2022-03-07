@@ -18,7 +18,7 @@ import javax.servlet.http.Part;
 
 /**
  *
- * @author ELOCK2
+ * @author Burak Fircasiguzel < www.github.com/burakfircasiguzel >
  */
 @SessionScoped
 @ManagedBean(name = "DocumentController", eager = true)

@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author ELOCK2
+ * @author Burak Fircasiguzel < www.github.com/burakfircasiguzel >
  */
 @SessionScoped
 @ManagedBean(name = "UserController", eager = true)

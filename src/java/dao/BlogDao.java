@@ -19,7 +19,7 @@ import util.DbFunctions;
 
 /**
  *
- * @author ELOCK2
+ * @author Burak Fircasiguzel < www.github.com/burakfircasiguzel >
  */
 public class BlogDao {
 

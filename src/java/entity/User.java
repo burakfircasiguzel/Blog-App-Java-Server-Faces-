@@ -7,7 +7,7 @@ package entity;
 
 /**
  *
- * @author ELOCK2
+ * @author Burak Fircasiguzel < www.github.com/burakfircasiguzel >
  */
 public class User {
     private int id;

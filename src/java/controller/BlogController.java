@@ -17,7 +17,7 @@ import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author ELOCK2
+ * @author Burak Fircasiguzel < www.github.com/burakfircasiguzel >
  */
 @SessionScoped
 @ManagedBean(name = "BlogController", eager = true)

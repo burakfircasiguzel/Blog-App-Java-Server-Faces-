@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author ELOCK2
+ * @author Burak Fircasiguzel < www.github.com/burakfircasiguzel >
  */
 public class Category {
 

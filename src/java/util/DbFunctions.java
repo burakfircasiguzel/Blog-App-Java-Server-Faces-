@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author ELOCK2
+ * @author Burak Fircasiguzel < www.github.com/burakfircasiguzel >
  */
 public class DbFunctions {
 

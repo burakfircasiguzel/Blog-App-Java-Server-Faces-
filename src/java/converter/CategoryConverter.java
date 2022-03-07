@@ -14,7 +14,7 @@ import javax.faces.convert.FacesConverter;
 
 /**
  *
- * @author ELOCK2
+ * @author Burak Fircasiguzel < www.github.com/burakfircasiguzel >
  */
 @FacesConverter(value="categoryConverter")
 public class CategoryConverter implements Converter {
