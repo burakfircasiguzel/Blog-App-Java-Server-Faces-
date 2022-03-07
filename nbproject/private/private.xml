@@ -4,14 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/web/index.xhtml</file>
-            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/controller/BlogController.java</file>
-            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/dao/DocumentDao.java</file>
-            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/dao/CategoryDao.java</file>
             <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/dao/BlogDao.java</file>
-            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/web/admin/add-blog.xhtml</file>
-            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/util/DbConnection.java</file>
             <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/controller/CategoryController.java</file>
-            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/util/DbFunctions.java</file>
         </group>
     </open-files>
 </project-private>

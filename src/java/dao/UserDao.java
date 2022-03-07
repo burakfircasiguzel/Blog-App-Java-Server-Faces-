@@ -22,8 +22,9 @@ public class UserDao {
 
     public boolean loginControl(User user) {
         try {
-            Statement st = DbFunctions.connect().createStatement();;
-            ResultSet rs = st.executeQuery("SELECT * FROM admin WHERE username='"+user.getName()+"' AND password='"+user.getPassword()+"' ");
+            Statement st = DbFunctions.connect().createStatement();
+            // using MD5 for password encryption
+            ResultSet rs = st.executeQuery("SELECT * FROM admin WHERE username='"+user.getName()+"' AND password=md5('"+user.getPassword()+"') ");
             while (rs.next()) {
                 return true;
             }
