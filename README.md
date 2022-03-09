@@ -9,7 +9,7 @@ Basic Blog Application with Java Server Faces (For Beginner)
 - Using Data Access Object Classes (DAO)
 - HTML Rendering
 - Learning JSF Special .xhtml tags  (e.g: h:outputText..)
-- Adding inline or outline .css and .js file in JSF application
+- Adding internal or extarnal .css and .js file in JSF application
 - All CRUD (Create,Read,Update,Delete) operations with MySQL
 - File upload and file show
 - Using JSF Converter
