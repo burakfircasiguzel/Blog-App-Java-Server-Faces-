@@ -31,8 +31,7 @@ Basic Blog Application with Java Server Faces
 ## Installion
 - Step 1. Download or `git clone` this project
 - Step 2. Import `db.sql` on your server then you change infos (dbusername,dbpassword, etc.) in `src/java/util/DbFunctions.java`
-- Step 3. Import db.sql to server
-- Step 4. Run project on IDE or write command `mvn install`
+- Step 3. Run project on IDE or write command `mvn install`
 Then it will run on server `localhost:8080`
 
 ## Notes
