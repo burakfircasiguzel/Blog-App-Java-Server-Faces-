@@ -20,15 +20,17 @@ Basic Blog Application with Java Server Faces (For Beginner)
 ### Home:
 ![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/home.png)
 
-### Login
+### Login:
 
-![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/login-page.png)
+![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/login-page.png )
 
-### Admin Page
+### Admin Page:
 ![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/admin-blogs.png)
 
 
 ## Installion
 - Step 1. Download or `git clone` this project
 - Step 2. Create new database on your server then you change infos in `src/java/util/DbFunctions.java`
-- Step 3. Run project on IDE or write command `mvn install`
+- Step 3. Import db.sql to server
+- Step 4. Run project on IDE or write command `mvn install`
+Then it will run on server `localhost:8080`
