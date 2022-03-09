@@ -17,15 +17,15 @@ Basic Blog Application with Java Server Faces (For Beginner)
 - Login Filter 
 
 ## Screenshots
-#### Home:
-![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/home.png  =700x)
+### Home:
+![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/home.png)
 
 ### Login
 
-![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/login-page.png  =700x)
+![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/login-page.png)
 
 ### Admin Page
-![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/admin-blogs.png  =700x)
+![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/img/screenshots/admin-blogs.png)
 
 
 ## Installion
