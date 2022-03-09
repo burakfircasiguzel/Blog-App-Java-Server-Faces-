@@ -2,7 +2,7 @@
 # Basic Blog Project (Java Server Faces)
 
 ![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/web/resources/favicon-32x32.png)
-Basic Blog Application with Java Server Faces
+Basic Blog Application with Java Server Faces (For Beginner)
 ## About
 
 - OOP Design
@@ -35,3 +35,6 @@ Basic Blog Application with Java Server Faces
 - Step 4. Run project on IDE or write command `mvn install`
 
 Then it will run on server `localhost:8080`
+
+## Notes
+If your IDE does not have the JSF 2.2 and MySQL Connector jars library, you can find the .jar files in '/jarfiles' for working requirements.
