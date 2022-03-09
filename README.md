@@ -37,4 +37,4 @@ Basic Blog Application with Java Server Faces (For Beginner)
 Then it will run on server `localhost:8080`
 
 ## Notes
-If your IDE does not have the JSF 2.2 and MySQL Connector jars library, you can find the .jar files in '/jarfiles' for working requirements.
+If your IDE does not have the JSF 2.2 and MySQL Connector jars library, you can find the .jar files in `'/jarfiles'` for working requirements.
