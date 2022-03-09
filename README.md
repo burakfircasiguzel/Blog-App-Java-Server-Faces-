@@ -33,6 +33,7 @@
 - Step 2. Import `db.sql` on your server then you change infos (dbusername,dbpassword, etc.) in `src/java/util/DbFunctions.java`
 - Step 3. Run project on IDE or write command `mvn install`
 Then it will run on server `localhost:8080`
+#### Login: Username: admin / Password: pass
 
 ## Notes
 If your IDE does not have the JSF 2.2 and MySQL Connector jars library, you can find the .jar files in `/jarfiles` for working requirements.
