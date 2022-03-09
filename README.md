@@ -1,5 +1,5 @@
 
-# Basic Blog Project (Java Server Faces)
+# Basic Blog Application (Java Server Faces)
 
 ![](https://raw.githubusercontent.com/burakfircasiguzel/Blog-App-Java-Server-Faces/master/web/resources/favicon-32x32.png)
 Basic Blog Application with Java Server Faces (For Beginner)
