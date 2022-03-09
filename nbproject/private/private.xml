@@ -4,8 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/web/index.xhtml</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/controller/BlogController.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/dao/DocumentDao.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/util/LoginFilter.java</file>
             <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/dao/BlogDao.java</file>
             <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/controller/CategoryController.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/controller/DocumentController.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/util/DbFunctions.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/util/FileServlet.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/controller/UserController.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/dao/CategoryDao.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/entity/Document.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/entity/User.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/entity/Category.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/converter/CategoryConverter.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/entity/Blog.java</file>
+            <file>file:/C:/Users/ELOCK2/Documents/NetBeansProjects/BlogApp/src/java/dao/UserDao.java</file>
         </group>
     </open-files>
 </project-private>
